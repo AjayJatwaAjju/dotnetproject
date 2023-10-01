@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\Ajay Jatwa\GitHub\cip_253_Code_Engine\VCEWeb\VCEWeb\bin\Release\net6.0\publish\</_PublishTargetUrl>
+    <History>True|2023-09-29T10:49:35.1621417Z;True|2023-09-29T11:46:00.1147618+05:30;True|2023-09-29T11:35:30.7678742+05:30;True|2023-09-29T11:34:07.0511193+05:30;True|2023-09-28T20:07:53.6609184+05:30;True|2023-09-28T20:00:04.6522249+05:30;True|2023-09-27T16:40:16.2235920+05:30;True|2023-07-01T11:37:43.0147141+05:30;True|2023-06-22T14:12:15.7753250+05:30;True|2023-06-22T14:11:41.8994139+05:30;True|2023-06-22T14:00:21.6039631+05:30;True|2023-06-22T12:44:30.7515744+05:30;</History>
+  </PropertyGroup>
+</Project>

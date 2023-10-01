@@ -1,0 +1,78 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>72e00979-22a2-4a22-b8b9-c3f62e7ced0c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="bin\Debug\net6.0\ClassFile\UserProvider .cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\net6.0\HtmlFiles\DatatableExample.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Apis.Auth" Version="1.60.0" />
+    <PackageReference Include="Microsoft.AspNet.OData" Version="7.6.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="6.0.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\VCEService\VCE.Business\VCE.Business.csproj" />
+    <ProjectReference Include="..\..\VCEService\VCE.Shared\VCE.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SqlScript\" />
+    <Folder Include="Views\Uitility\" />
+    <Folder Include="wwwroot\lib\jquery\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0\JsFiles\PageSampleRshx.js" />
+    <None Include="bin\Debug\net6.0\JsFiles\PageSample.js" />
+    <None Include="bin\Debug\net6.0\PgSqlScript\fnGetUserNameById.sql" />
+    <None Include="bin\Debug\net6.0\PgSqlScript\GetTableData.sql" />
+    <None Include="bin\Debug\net6.0\PgSqlScript\GetTableInfo.sql" />
+    <None Include="bin\Debug\net6.0\PgSqlScript\spDeleteTableData.sql" />
+    <None Include="bin\Debug\net6.0\PgSqlScript\spErrorLog.sql" />
+    <None Include="bin\Debug\net6.0\PgSqlScript\spGetTable.sql" />
+    <None Include="bin\Debug\net6.0\PgSqlScript\spGetTableDataByID.sql" />
+    <None Include="bin\Debug\net6.0\PgSqlScript\spInsertTableData.sql" />
+    <None Include="bin\Debug\net6.0\SqlScript\spSetTable.sql" />
+    <None Include="bin\Debug\net6.0\PgSqlScript\spSetTable.sql" />
+    <None Include="bin\Debug\net6.0\PgSqlScript\spUpdateTableData.sql" />
+    <None Include="bin\Debug\net6.0\PgSqlScript\tblErrorLogs.sql" />
+    <None Include="bin\Debug\net6.0\SqlScript\fnGetUserNameById.sql" />
+    <None Include="bin\Debug\net6.0\SqlScript\GetTableData.sql" />
+    <None Include="bin\Debug\net6.0\SqlScript\GetTableInfo.sql" />
+    <None Include="bin\Debug\net6.0\SqlScript\spDeleteTableData.sql" />
+    <None Include="bin\Debug\net6.0\SqlScript\spErrorLog.sql" />
+    <None Include="bin\Debug\net6.0\SqlScript\spGetTable.sql" />
+    <None Include="bin\Debug\net6.0\SqlScript\spGetTableDataByID.sql" />
+    <None Include="bin\Debug\net6.0\SqlScript\spInsertTableData.sql" />
+    <None Include="bin\Debug\net6.0\SqlScript\spUpdateTableData.sql" />
+    <None Include="bin\Debug\net6.0\SqlScript\tblErrorLogs.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

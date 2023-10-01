@@ -1,0 +1,77 @@
+using System.Data;
+using @CNameSpace.DAL;
+
+namespace @CNameSpace.Business
+{
+    ///--------------------------------------------------------------------------
+    /// <summary>
+    /// Summary description for @ReplaceTableName Service.
+    /// </summary> 
+    /// <remarks>
+    /// Created On:- 20/09/2023
+    /// Created By:- @ReplaceTableNames
+    /// Purpose:- This service provides business logic for managing @ReplaceTableName-related operations.
+    /// </remarks>
+    ///---------------------------------------------------------------------------
+    public class @ReplaceTableNameService
+    {
+        #region Methods
+
+        //Creating a @ReplaceTableNames object
+        @ReplaceTableNameProvider obj@ReplaceTableNameProvider = new @ReplaceTableNameProvider();
+
+        /// <summary>
+        ///This will return all @ReplaceTableName records based on applied condition.
+        /// </summary>
+        /// <param name="whereCondition">Passing condition for filtering @ReplaceTableName records</param>
+        /// <param name="orderBy">Passing OrderBy</param>
+        /// <returns>returning @ReplaceTableName which is generated.</returns>
+        public DataTable Get@ReplaceTableNameInfo(string whereCondition, string orderBy, string pageStart, string pageSize)
+        {
+            return obj@ReplaceTableNameProvider.Get@ReplaceTableNameInfo(whereCondition, orderBy, pageStart, pageSize);
+        }
+        /// <summary>
+        /// Inserting @ReplaceTableName information.
+        /// </summary>
+        /// <remarks>
+        /// <param name="Insert@ReplaceTableNameInfo">Passing all @ReplaceTableName info."</param> 
+        /// <returns>returning @ReplaceTablePK which is generated.</returns>
+        /// </remarks>
+        public int Insert@ReplaceTableNameInfo(DataTable @ReplaceTableNameInfo)
+        {
+            return obj@ReplaceTableNameProvider.Insert(@ReplaceTableNameInfo);
+        }
+        /// <summary>
+        /// Get @ReplaceTableName info by @ReplaceTablePK
+        /// </summary>
+        /// <param name="@ReplaceTablePK"></param>
+        /// <returns>returning @ReplaceTablePK which is generated.</returns>
+        public DataTable Get@ReplaceTableNameInfoById(string @ReplaceTablePK)
+        {
+            return obj@ReplaceTableNameProvider.Get@ReplaceTableNameInfoById(@ReplaceTablePK);
+        }
+        /// <summary>
+        /// Updating  @ReplaceTableName information.
+        /// </summary>
+        /// <remarks>
+        /// <param name="@ReplaceTableNameInfo">Passing all @ReplaceTableName info.</param>
+        /// <returns>returning updated record status. </returns>
+        /// </remarks>
+        public int Update@ReplaceTableName(DataTable @ReplaceTableNameInfo)
+        {
+            return obj@ReplaceTableNameProvider.Update(@ReplaceTableNameInfo);
+        }
+        /// <summary>
+        /// This will delete @ReplaceTableName table record based on UserId.
+        /// </summary>
+        /// <remarks/>
+        /// <param name="@ReplaceTablePK">Passing deleteId.</param>
+        /// <returns>returning delete status.</returns>
+        /// <remarks/>
+        public bool Delete@ReplaceTableName(string @ReplaceTablePK)
+        {
+            return obj@ReplaceTableNameProvider.Delete(@ReplaceTablePK);
+        } 
+        #endregion
+    }
+}

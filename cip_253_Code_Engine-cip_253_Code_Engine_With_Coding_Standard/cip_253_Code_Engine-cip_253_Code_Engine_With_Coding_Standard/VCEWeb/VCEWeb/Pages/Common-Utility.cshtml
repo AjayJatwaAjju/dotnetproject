@@ -1,0 +1,113 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Comman Utitlity";
+}
+<!-- ======= Home Section ======= -->
+<section id="Utility" class="d-flex flex-column justify-content-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8">
+                <h1>
+                    Common Utitlity
+                </h1>
+            </div>
+        </div>
+    </div>
+</section><!--/.End Home -->
+<link rel="stylesheet" href="~/lib/datatables/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" href="~/css/Home.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="/lib/jquery-confirm/jquery-confirm.min.css" rel="stylesheet" />
+<main id="main">
+    <div class="container">
+        <section class="row connectedSortable ui-sortable">
+            <div class="accordion">
+                  <div class="accordion-item accordion-StoredProcedure">
+                    <div id="sectionUSPSelection" class="accordion-collapse collapses show" aria-labelledby="sectionUSPSelection">
+                        <div class="card-header" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                            <h2 >
+                                Default/Standard Common Utility
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <legend>-Utility Filter-</legend>
+                            <div class="form-check form-check-inline">
+    <div class="mb-3"
+        <label for="disabledSelect" class="form-label">Select Language</label>
+        <select id="disabledSelect" class="form-control">
+            <option>Select</option>
+            <option>C#</option>
+            <option>PHP</option>
+            <option>JAVA</option>
+        </select>
+        </div>
+</div>
+
+<div class="form-check form-check-inline">
+    <div class="mb-3"
+    <label for="disabledSelect" class="form-label">Default/Standard Utility</label>
+    <select id="disabledSelect" class="form-control">
+    <option>Select</option>
+    <option>VIRIM-Utility</option>
+    <option>Third Party-Utility</option>
+    <option>Plugins</option>
+    </select>
+    </div>
+</div>
+<br />
+<div class="mb-3"
+    <label for="disabledSelect" class="form-label">Select Utility</label>
+    <select id="disabledSelect" class="form-control">
+        <option>Select</option>
+        <option>Send email (Pass SMTP Settings)</option>
+        <option>Encryption and Decryption (Base64/MD5)</option>
+        <option>Builk Upload with validations (TVP)</option>
+        <option>Save/Update/Delete files</option>
+        <option>ENUMS (Currency Symbols/Language)</option>
+        <option>Generate random password</option>
+        <option>JS Validations</option>
+    </select>
+    </div>
+<button type="submit" class="btn btn-primary mb-2">Apply Filter</button>
+
+<br />
+<br />
+<br />
+<legend>-Utility-</legend>
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Code</button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Example to call with number of perms</button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"></button>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div style="text-align:center" class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <button type="submit" style="float:right" class="btn btn-primary mb-2">Download File Reference (DLL, Etc..)</button> <br / ><h3>Code/Calling with in/out</h3>
+    </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+</div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                   @* <a class="btn btn-primary mb-2 accordion-prev" step="headingUSPSelection">Back</a>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/Pages/DataTable_Custom.js"></script>
+    <script src="~/js/Services/LookupService.js"></script>
+    <script src="~/js/Services/GetdataService.js"></script>
+    <script src="/lib/jquery-confirm/jquery-confirm.min.js"></script>
+    <script src="/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="/lib/aes/index.min.js"></script>
+    <script src="~/js/Pages/home.js"></script>
+</main>

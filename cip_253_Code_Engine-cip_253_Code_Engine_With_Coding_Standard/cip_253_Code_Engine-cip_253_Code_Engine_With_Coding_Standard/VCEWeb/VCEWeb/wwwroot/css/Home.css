@@ -1,0 +1,172 @@
+﻿/*we are using this css form home page table command tabs */
+.sectionDatabaseSelection {
+    padding: 10px 0;
+}
+
+.ui-tabs .ui-tabs-panel {
+    height: 400px;
+    overflow-y: auto;
+}
+
+#button-wrapper {
+    border: 1px solid #dddddd;
+    background: #e9e9e9;
+    color: #333333;
+    font-weight: bold;
+}
+
+ul.ui-widget-header {
+    border: none;
+}
+
+marginright-btn {
+    float: right;
+}
+
+.modal {
+    background-color: #fefefe85;
+}
+
+.modal-dialog {
+    max-width: 800px;
+    margin: 1.75rem auto
+}
+
+.col-md-6.row {
+    margin-bottom: 10px;
+}
+
+.connectedSortable.hide {
+    display: none;
+}
+
+.accordion-header.hidden {
+    display: none;
+}
+
+div[data-acc-content] {
+    display: none;
+}
+
+div[data-acc-step]:not(.open) {
+    background: #f2f2f2;
+}
+
+    div[data-acc-step]:not(.open) h5 {
+        color: #777;
+    }
+
+    div[data-acc-step]:not(.open) .badge-primary {
+        background: #ccc;
+    }
+
+.accordion-next {
+    float: right;
+}
+
+.accordion-prev {
+}
+
+.from-group {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+    .from-group label,
+    .form-label {
+        font-weight: bold;
+    }
+
+table.dataTable thead th,
+table.dataTable thead td {
+    border-right: 1px solid #111;
+}
+
+    table.dataTable thead th:first-child,
+    table.dataTable td:first-child {
+        border-left: 1px solid #111;
+    }
+
+    table.dataTable thead th:last-child,
+    table.dataTable td:last-child {
+        border-right: 1px solid #111;
+    }
+
+table.dataTable thead tr:first-child th {
+    border-top: 1px solid #111;
+}
+
+/*Utility css*/
+.Utility {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div#successAlert {
+    position: relative;
+    padding: 10px 1rem;
+    /*margin-bottom: 1rem;*/
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+div#errorAlert {
+    position: relative;
+    padding: 10px 1rem;
+   /* margin-bottom: 1rem;*/
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+#copyBtn{
+    text-align:end;
+}
+/*#copyBtn {
+    display:block;*/
+    /* text-align: end; */
+    /*display: flex;
+    justify-content: space-between;
+}*/
+span#textCopy {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    padding: 8px;
+    margin-right: 10px;
+}
+
+span#textNotCopy {
+    background-color: #f8d7da;
+    color: #842029;
+    padding: 8px;
+    margin-right: 10px;
+}
+span#textCopyStore {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    padding: 8px;
+    margin-right: 10px;
+}
+
+span#textNotCopyStore {
+    background-color: #f8d7da;
+    color: #842029;
+    padding: 8px;
+    margin-right: 10px;
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+}

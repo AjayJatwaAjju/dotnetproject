@@ -1,0 +1,470 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<!-- ======= Home Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8">
+                <h1>
+                    VCE - VIRIM Code Engine
+                </h1>
+                <h2>
+                    Welcome to Code Engine that helps to get code as a Gadget.
+                </h2>
+            </div>
+        </div>
+    </div>
+</section><!--/.End Home -->
+<link rel="stylesheet" href="~/lib/datatables/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" href="~/css/Home.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="/lib/jquery-confirm/jquery-confirm.min.css" rel="stylesheet" />
+<main id="main">
+    <div class="container">
+        <section class="row connectedSortable ui-sortable">
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <!--Dbconnection Selction -->
+                <div class="accordion-item accordion-Dbconnection">
+                    <h2 class="accordion-header hidden" id="headingDbconnection">
+                        <button title="Please make database connectivity and generate business/dall classes methods and required script along with grid based on selected database and table." class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#Dbconnection" aria-expanded="true" aria-controls="Dbconnection">
+                            Make Database Connection
+                        </button>
+                    </h2>
+                    <div id="Dbconnection" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>
+                                    Make Database Connection
+                                </h2>
+                                <div>
+                                     <div id="Connected">
+                                         <div class="toast" style="width:100%;">
+                                              <div class="" role="alert" id="successAlert" style="display:none">
+                                                 Connected successfully
+                                              </div>
+                                              <div class="" role="alert" id="errorAlert" style="display:none">
+                                                  Connection not established , Wrong or Invalid Credentials.
+                                              </div>
+                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <fieldset class="row">
+                                    <div class="col-lg-10 from-group">
+                                        <label for="disabledSelect" class="form-label">Server Type</label>
+                                        <select id="SelectDatabaseType" class="form-control form-select">
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-10 from-group">
+                                        <label for="disabledTextInput" class="form-label">Server Name</label>
+                                        <input type="text" id="txtServerName" class="form-control" placeholder="Server Name">
+                                    </div>
+                                    <div class="col-lg-10 from-group">
+                                        <label for="disabledTextInput" class="form-label">Login Id</label>
+                                        <input type="text" id="textUserName" class="form-control" placeholder="Server Login Id">
+                                    </div>
+                                    <div class="col-lg-10 from-group">
+                                        <label for="disabledTextInput" class="form-label">Password</label>
+                                        <input type="password" id="textPassword" class="form-control" placeholder="Server Password">
+                                    </div>
+                                   @*  <div class="col-lg-10 from-group" id="Connected">
+                                         <div class="toast">
+                                              <div class="" role="alert" id="successAlert" style="display:none">
+                                                 Connected successfully
+                                              </div>
+                                              <div class="" role="alert" id="errorAlert" style="display:none">
+                                                  Connection not established , Wrong or Invalid Credentials.
+                                              </div>
+                                         </div>
+                                    </div>*@
+                                    <div class="col-lg-10 from-group">
+                                        <button id="ConnectDatabase" class="btn btn-primary mb-2">Test Connection</button>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-lg-12" style="">
+                                        <a class="btn btn-primary mb-2 accordion-next" next-step="headingTableSelection" step="Dbconnection">Next</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- /.Dbconnection Selction -->
+                    <!-- TableSelection Selction -->
+                <div class="accordion-item accordion-TableSelection" style="display:none">
+                    <h2 class="accordion-header hidden" id="headingTableSelection">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#TableSelection" aria-expanded="false" aria-controls="TableSelection" disabled>
+                            Select Database To Perform Action
+                        </button>
+                    </h2>
+                    <div id="TableSelection" class="accordion-collapse collapse show" aria-labelledby="TableSelection">
+                        <div class="card-header">
+                            <h2>
+                                Select Database To Perform Action
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <fieldset class="row">
+                                <div class="row">
+                                    <div class="col-md-6 from-group">
+                                        <label for="disabledSelect" class="form-label">Select Database</label>
+                                        <select id="selectDatabase" class="form-control form-select">
+                                            @*<option value="0">Select</option>*@
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 from-group">
+                                        <label for="disabledSelect" class="form-label">Select Table</label>
+                                        <select id="SelectTable" class="form-control form-select">
+                                           @* <option value="1">Select</option>*@
+                                        </select>
+                                    </div>
+                                </div>
+                                 <div class="col-md-6 from-group">
+                                        <label for="disabledSelect" class="form-label">Select table2</label>
+                                    <select id="selectMultipleTables1" class="form-control form-select">
+                                            @*<option value="0">Select</option>*@
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 from-group">
+                                        <label for="disabledSelect" class="form-label">Select Table3</label>
+                                        <select id="selectMultipleTables2" class="form-control form-select">
+                                           @* <option value="1">Select</option>*@
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 from-group">
+                                        <label for="disabledSelect">Select API</label>
+                                        <select id="SelectApiType" class="form-control form-select">
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 from-group">
+                                        <label for="IsActive">Select Grid type</label>
+                                        <select id="SelectGridType" class="form-control form-select">
+                                            <option>JQ Grid</option>
+                                            <!-- In case we have more fields -->
+                                            @* <option>Kendo Grid</option>
+                                            <option>Bootstrap/HTML Grid</option>*@
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 from-group">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="IsActive">Sorting</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="checkbox" id="DTE_Sorting" checked="checked">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 from-group">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="IsActive">Filtering </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="checkbox" id="DTE_Searching" checked="checked">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 from-group">
+                                          <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="IsActive">Pagination</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="checkbox" id="DTE_Paginate" checked="checked" onclick="checkPageLength()">
+                                            </div>
+                                        </div>
+                                        <div class="row d-none">
+                                            <div class="col-md-4">
+                                                <label for="IsActive">ServerSide </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="checkbox" checked="checked" id="DTE_bServerSide" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 from-group">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="IsActive">Paging Info </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="checkbox" id="DTE_bInfo" checked="checked">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row d-none">
+                                    <div class="col-md-6 from-group">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="IsActive">ScrollX</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="checkbox" id="DTE_ScrollX" checked="checked">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 from-group">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="IsActive">ScrollY</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="checkbox" id="DTE_ScrollY" checked="checked">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 from-group">
+                                        <div class="row">
+                                            <div class="col-md-4" onmouseover="showUSPInfo(this)" onmouseout="hideUSPInfo(this)">
+                                                <label for="IsActive" data-toggle="tooltip" data-placement="top" title="Tooltip on top">USP <i class="fa fa-info-circle" aria-hidden="true"  data-toggle="tooltip" data-placement="top" title="User-Defined Stored Procedures."></i></label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="checkbox" id="Multi_Procedure" >
+                                                  <span class="alert alert-info" id="USPInfo" style="display:none">
+                                                         Seperate Procedures For <strong>CRUD</strong> Operation.
+                                                   </span>
+                                            </div>
+                                        </div>
+                                         <div class="row mt-4">
+                                            <div class="col-md-4">
+                                                     <label for="IsActive" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Custom Name Space 
+                                                         <i class="fa fa-info-circle" aria-hidden="true"  data-toggle="tooltip" data-placement="top" title="Add your Project's NameSpace here."></i>
+                                                     </label>
+                                            </div>
+                                             <div class="col-md-8">
+                                                <input type="text" id="CustomeNameSpace" class="form-control" placeholder="Custome Name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 from-group">
+                                         <div id="pageLength">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                 <label for="IsActive">Page Length</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <select id="aLengthMenu" class="form-control form-select">
+                                                        <option>10</option>
+                                                        <option>50</option>
+                                                        <option>100</option>
+                                                        <option>200</option>
+                                                        <option>500</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <a class="btn btn-primary mb-2 accordion-prev" next-step="headingDbconnection" step="TableSelection">Back</a>
+                                </div>
+                                <div class="col-lg-6" style="">
+                                    <a class="btn btn-primary mb-2 accordion-next" next-step="headingFilterOptions" step="TableSelection">Next</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- /.TableSelection Selction -->
+                    <!-- FilterOptions selction -->
+                <div class="accordion-item accordion-headingFilterOptions" style="display:none">
+                    <h2 class="accordion-header hidden" id="headingFilterOptions">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sectionFilterOptionsSelection" aria-expanded="false" aria-controls="sectionFilterOptionsSelection" disabled>
+                            Select Filter Options
+                        </button>
+                    </h2>
+                    <div id="sectionFilterOptionsSelection" class="accordion-collapse collapse show" aria-labelledby="sectionFilterOptionsSelection">
+                        <div class="card-header">
+                            <h2>
+                                Select Filter Options
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <div id="divTableDetails">
+                                <table class="table table-hover  dataTable no-footer" style="min-width: 100%;width: 100%; margin-left: 0px; width: auto;" role="grid" id="TableDetails">
+                                    <thead>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <a class="btn btn-primary mb-2 accordion-prev" next-step="headingTableSelection" step="FilterOptions">Back</a>
+                                </div>
+                                <div class="col-lg-6" style="">
+                                    <a class="btn btn-primary mb-2 accordion-next" next-step="headingFrontend" step="FilterOptions">Next</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- /.FilterOptions selction -->
+                    <!-- Preview Section -->
+                <div class="accordion-item accordion-Frontend" style="display:none">
+                    <div id="sectionFrontendSelection" class="accordion-collapse collapse show" aria-labelledby="sectionFrontendSelection">
+                        <div class="card-header">
+                            <h2>
+                                Preview Section
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <div id="tabsHtml">
+                                <div class="row ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header">
+                                    <div class="col-md-10">
+                                        <ul>
+                                            <li tabtype="PrivewTab"><a href="#tabs-preview" class="nav-link" id="PrivewTab">Preview</a></li>
+                                            <li><a href="#tabs-Js" class="nav-link">JS Script</a></li>
+                                            <li><a href="#tabs-html" class="nav-link">HTML & CSS</a></li>
+                                            <li  tabtype="LinksTab"><a href="#tabs-Links" class="nav-link" id="LinksTab">Links</a></li>
+                                            <li tabtype="Controler"><a href="#tabs-Controler" class="nav-link">Controller</a></li>
+                                            <li tabtype="Bussiness"><a href="#tabs-Bussiness" class="nav-link" id="newProcedureDal">Bussiness</a></li>
+                                             <li tabtype="DAL"><a href="#tabs-DAL" class="nav-link" id="DalBusiness">DAL</a></li>
+                                            <li tabtype="Class"><a href="#tabs-Class" class="nav-link">Model</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-2" id="copyBtn" style="text-align: end;">
+                                        <div style="margin-top: 3px;"  aria-hidden="true"  data-toggle="tooltip" data-placement="left" title="If copy button doesn't work ,Select and Copy code manually">
+                                                <span  id="textCopy" class="toast fades" aria-live="polite" aria-atomic="true" data-bs-delay="1000">Copied!</span>
+                                                <span  id="textNotCopy"  class="toast fades" aria-live="polite" aria-atomic="true" data-bs-delay="1000">Not Copied</span>
+                                          <button class="btn btn-primary right-btn" onclick="copyToClipboard('tabsHtml')">
+                                            <i class="fa fa-copy"></i>
+                                          </button>
+                                        </div>
+                                     </div>
+                                </div>
+                                <div id="tabs-preview"></div>
+                                <div id="tabs-Js"><p>Js</p></div>
+                                <div id="tabs-html"><p>HTML & CSS</p></div>
+                                <div id="tabs-Links">
+                                    <p><a href="~/lib/bootstrap/dist/css/bootstrap.min.css" target="_blank">bootstrap.min.css</a></></p>
+                                    <p><a href="~/lib/datatables/css/jquery.dataTables.min.css" target="_blank" >jquery.dataTables.min.css</a></></p>
+                                    <p>JS</p>
+                                    <p><a href="~/lib/jquery/dist/jquery.min.js" target="_blank" >jquery.min.js</a></></p>
+                                    <p><a href="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" target="_blank" >bootstrap.bundle.min.js</a></></p>
+                                    <p><a href="~/lib/datatables/js/jquery.dataTables.min.js" target="_blank" >jquery.dataTables.min.js</a></></p>
+                                    <p><a href="~/js/Pages/DataTable_Custom.js" target="_blank" >DataTable_Custom.js</a></></p>
+                                    <p id="PGHepler" ><a href="~/Helper/PostgreSQLHelper.js" target="_blank" >PostgreSQLHelper.cs</a></></p>
+                                    <p id="SQlHelper" ><a href="~/Helper/SqlHelper.js" target="_blank" >SQLHelper.cs</a></></p>
+                                </div>
+                                <div id="tabs-Controler"><p>GetValueById</p></div>
+                                <div id="tabs-Bussiness"><p>Bussiness</p></div>
+                                <div id="tabs-DAL"><p>DAL</p></div>
+                                <div id="tabs-Class"><p>Table Valued Parameters (TVP)</p></div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <a class="btn btn-primary mb-2 accordion-prev" step="headingFrontend">Back</a>
+                                </div>
+                                <div class="col-lg-6" style="">
+                                    <a class="btn btn-primary mb-2 accordion-next" step="headingFrontend">Next</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- /.Preview Section -->
+                    <!-- Stored Procedure Section -->
+                <div class="accordion-item accordion-StoredProcedure" style="display:none">
+                    <div id="sectionUSPSelection" class="accordion-collapse collapses show" aria-labelledby="sectionUSPSelection">
+                        <div class="card-header">
+                            <h2 >
+                                Stored Procedure (USP) <i class="fa fa-info-circle" aria-hidden="true"  data-toggle="tooltip" data-placement="top" title="NOTE : 'active' column is used in procedures as logical deletion column , Please change it according to your table requirement."></i>
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <div id="tabsStoredProcedure">
+                                <div class="row ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header">
+                                    <div class="col-md-10">
+                                        <ul>
+                                            <li tabtype="setOprations"><a href="#tabs-SetOprations" class="nav-link" id="setOperations">Set Operations</a></li>
+                                            <li tabtype="getTableInfo"><a href="#tabs-GetInfo" class="nav-link" id="GetInfo">Get Operations</a></li>
+                                            <li tabtype="errorLogTable" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                                                <a href="#tabs-errorLogTable" class="nav-link" id="errorLogUSP">
+                                                    Error Log <i class="fa fa-info-circle" aria-hidden="true"  data-toggle="tooltip" data-placement="top" title="Refrence of this procedure can be seen in catch block of procedures , use to keep track of errors generated in procedures in table 'ErrorLogs' (Creation script of this table also mentioned below)."  style="cursor:pointer"></i>
+                                                </a>
+                                            </li>
+                                            <li tabtype="insertIntoTable"><a href="#tabs-insertIntoTable" class="nav-link" id="InsertUSP">Insert</a></li>
+                                            <li tabtype="updateTable"><a href="#tabs-updateTable" class="nav-link"  id="UpdateUSP">Update</a></li>
+                                            <li tabtype="deleteFromTable"><a href="#tabs-deleteFromTable" class="nav-link"  id="DeleteUSP">Delete</a></li>
+                                            <li tabtype="getTableInfoById"><a href="#tabs-getTableInfoById" class="nav-link"  id="GetInfoByIdUSP">GetInfoById</a></li>
+                                            <li tabtype="fnGetUserNameById"><a href="#tabs-fnGetUserNameById" class="nav-link"  id="GetDataUSP">Get Data</a></li>
+                                        </ul>
+                                    </div>
+                                    @*<div class="col-md-2" id="copyBtn">
+                                        <div class="toast">
+                                                <div class="" role="alert" id="textCopy" style="display:none">
+                                                     Text copied!
+                                                </div>
+                                               <div class="" role="alert" id="textNotCopy" style="display:none">
+                                                  Error in copying!
+                                               </div>
+                                        </div>
+                                        <button class="btn btn-primary right-btn" onclick="copyToClipboard('tabsStoredProcedure')" style="margin-top:3px"><i class="fa fa-copy"></i></button>
+                                    </div>*@
+                                     <div class="col-md-2" id="copyBtn" style="text-align: end;">
+                                        <div style="margin-top: 3px;" aria-hidden="true"  data-toggle="tooltip" data-placement="left" title="If copy button doesn't work ,Select and Copy code manually">
+                                                <span  id="textCopyStore" class="toast" aria-live="polite" aria-atomic="true" data-bs-delay="1000">Copied!</span>
+                                                <span  id="textNotCopyStore"  class="toast" aria-live="polite" aria-atomic="true" data-bs-delay="1000">Not Copied</span>
+                                          <button class="btn btn-primary right-btn"onclick="copyToClipboard('tabsStoredProcedure')" >
+                                            <i class="fa fa-copy"></i>
+                                          </button>
+                                        </div>
+                                     </div>
+                                </div>
+                                <div id="tabs-SetOprations"><p>SetOperations</p></div>
+                                <div id="tabs-GetInfo"><p>Get Operations</p></div>
+                                <div id="tabs-errorLogTable"><p>Error Log</p></div>
+                                <div id="tabs-insertIntoTable"><p>Insert</p></div>
+                                <div id="tabs-updateTable"><p>Update</p></div>
+                                <div id="tabs-deleteFromTable"><p>Delete</p></div>
+                                <div id="tabs-getTableInfoById"><p>GetInfoById</p></div>
+                                <div id="tabs-fnGetUserNameById"><p>Get Data</p></div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <a class="btn btn-primary mb-2 accordion-prev" step="headingUSPSelection">Back</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                   <!-- /. Stored Procedure Section -->
+            </div>
+        </section>
+    </div>
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/Pages/DataTable_Custom.js"></script>
+    <script src="~/js/Services/LookupService.js"></script>
+    <script src="~/js/Services/GetdataService.js"></script>
+    <script src="/lib/jquery-confirm/jquery-confirm.min.js"></script>
+    <script src="/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="/lib/aes/index.min.js"></script>
+    <script src="~/js/Pages/home.js?092820231940"></script>
+</main>

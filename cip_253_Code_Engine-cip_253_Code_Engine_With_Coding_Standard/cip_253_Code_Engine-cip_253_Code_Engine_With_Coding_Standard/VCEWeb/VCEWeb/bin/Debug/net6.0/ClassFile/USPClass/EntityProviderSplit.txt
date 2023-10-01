@@ -1,0 +1,160 @@
+﻿using System.Data;
+using System.Data.SqlClient;
+using Newtonsoft.Json;
+using @CNameSpace.Helper;
+using @CNameSpace.Shared.Models;
+using WebTest.Helper;
+
+namespace @CNameSpace.DAL
+{
+    ///---------------------------------------------------------------------------
+    /// <summary>
+    /// This class will contain the property of @ReplaceTableName table.
+    /// </summary>
+    /// <remarks>
+    /// Created on :- 22-09-2023
+    /// Created By :- VCE
+    /// Purpose :- This provider is responsible for supplying data or services to other parts of the application.
+    /// </remarks>
+    ///---------------------------------------------------------------------------
+    public class @ReplaceTableNameProvider
+    {
+        #region Methods
+        /// <summary>
+        /// Inserting @ReplaceTableName information.
+        /// </summary>
+        /// <remarks>
+        /// <param name="@ReplaceTableNameInfo">Passing all @ReplaceTableName info."</param> 
+        /// <returns>returning Insert record status</returns>
+        /// </remarks>
+        public DataTable Insert(DataTable @ReplaceTableNameInfo)
+        {
+            DataTable ResultDatatable = new DataTable();
+            if (@ReplaceTableNameInfo != null)
+            {
+                if (@ReplaceTableNameInfo.Rows.Count > 0)
+                {
+                    try
+                    {
+                        string Result = String.Empty, Error = String.Empty;
+                        string ConnectionString = PostgreSQLHelper.GetConnectionString();
+                        string inputJson = JsonConvert.SerializeObject(@ReplaceTableNameInfo);
+                        DataSet dataSet = PostgreSQLHelper.GetProceduredata(ConnectionString, inputJson, "spInsert@ReplaceTableName", out Result, out Error);
+                        ResultDatatable = dataSet.Tables[0];
+                    }
+                    catch (SqlException sqlEx)  //Error...
+                    {
+                        throw sqlEx;
+                    }
+                }
+            }
+            return ResultDatatable;
+        }
+        /// <summary>
+        /// Updating  @ReplaceTableName information.
+        /// </summary>
+        /// <remarks>
+        /// <param name="@ReplaceTableNameInfo">Passing all @ReplaceTableName info.</param>
+        /// <returns>returning updated record status. </returns>
+        /// </remarks>
+        public DataTable Update(DataTable @ReplaceTableNameInfo)
+        {
+            DataTable ResultDatatable = new DataTable();
+            if (@ReplaceTableNameInfo != null)
+            {
+                if (@ReplaceTableNameInfo.Rows.Count > 0)
+                {
+                    try
+                    {
+                        string Result = String.Empty, Error = String.Empty;
+                        string ConnectionString = PostgreSQLHelper.GetConnectionString();
+                        string inputJson = JsonConvert.SerializeObject(@ReplaceTableNameInfo);
+                        DataSet dataSet = PostgreSQLHelper.GetProceduredata(ConnectionString, inputJson, "spUpdate@ReplaceTableName", out Result, out Error);
+                        ResultDatatable = dataSet.Tables[0];
+                    }
+                    catch (SqlException sqlEx)  //Error...
+                    {
+                        throw sqlEx;
+                    }
+                }
+            }
+            return ResultDatatable;
+        }
+        /// <summary>
+        /// This will delete @ReplaceTableName table record based on  @ReplaceTablePK.
+        /// </summary>
+        /// <remarks/>
+        /// <param name="@ReplaceTablePK">Passing deleteId.</param>
+        /// <returns>returning delete status.</returns>
+        /// <remarks/>
+        public int Delete(DataTable @ReplaceTableNameInfo)
+        {
+            int Result = 0;
+            try
+            {
+                string result = String.Empty, Error = String.Empty;
+                string ConnectionString = PostgreSQLHelper.GetConnectionString();
+                string inputJson = JsonConvert.SerializeObject(@ReplaceTableNameInfo);
+                DataSet dataSet = PostgreSQLHelper.GetProceduredata(ConnectionString, inputJson, "spDelete@ReplaceTableName", out result, out Error);
+                var dataTable = dataSet.Tables[0];
+            }
+            catch (SqlException sqlEx)  //Error...
+            {
+                throw sqlEx;
+            }
+            return Result;
+        }
+        /// <summary>
+        /// This will return all @ReplaceTableName records based on applied condition.
+        /// </summary>
+        /// <remarks>
+        /// <param name="DataTableSearchData">Passing condition for filtering @ReplaceTableName records.</param>
+        /// </remarks>
+        public DataTable Get@ReplaceTableNameInfo(DataTableSearchData @ReplaceTableNameInfo)
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                List<DataTableSearchData> lstdata = new List<DataTableSearchData>();
+                lstdata.Add(@ReplaceTableNameInfo);
+                string inputJson = JsonConvert.SerializeObject(lstdata);
+                string result = String.Empty, Error = String.Empty;
+                dataSet = null;
+                string ConnectionString = PostgreSQLHelper.GetConnectionString();
+                dataSet = PostgreSQLHelper.GetProceduredata(ConnectionString, inputJson, "spGet_@ReplaceTableName", out result, out Error);
+            }
+            catch (Exception ex)
+            {
+		 throw ex;
+            }
+            return dataSet.Tables[0];
+        }
+        /// <summary>
+        /// Getting @ReplaceTableName info based on @ReplaceTablePK.
+        /// </summary>
+        /// <remarks>
+        /// <param name="@ReplaceTablePK">Passing OrderBy.</param>
+        /// </remarks>
+        public DataTable Get@ReplaceTableNameInfoById(DataTable @ReplaceTableNameInfo)
+        {
+            try
+            {
+                string Result = String.Empty, Error = String.Empty;
+                string inputJson = JsonConvert.SerializeObject(@ReplaceTableNameInfo);
+                string ConnectionString = PostgreSQLHelper.GetConnectionString();
+                DataSet dataSet = PostgreSQLHelper.GetProceduredata(ConnectionString, inputJson, "spGet_@ReplaceTableName", out Result, out Error);
+                if (dataSet != null && dataSet.Tables.Count > 0)
+                {
+                    return dataSet.Tables[0];
+                }
+                return null;
+            }
+            catch (SqlException sqlEx)  //Error...
+            {
+                throw sqlEx;
+            }
+        }
+
+        #endregion
+    }
+}

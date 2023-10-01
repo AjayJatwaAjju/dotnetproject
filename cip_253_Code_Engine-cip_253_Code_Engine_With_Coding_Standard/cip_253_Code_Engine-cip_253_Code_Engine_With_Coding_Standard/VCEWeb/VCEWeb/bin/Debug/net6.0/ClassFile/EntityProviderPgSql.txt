@@ -1,0 +1,80 @@
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using Newtonsoft.Json;
+using @CNameSpace.Models;
+using @CNameSpace.Helper;
+
+namespace @CNameSpace.DAL
+{
+    ///---------------------------------------------------------------------------
+    /// <summary>
+    /// This class will contain the property of @ReplaceTableName table.
+    /// </summary>
+    /// <remarks>
+    /// Created on :- 22-09-2023
+    /// Created By :- VCE
+    /// Purpose :- This provider is responsible for supplying data or services to other parts of the application.
+    /// </remarks>
+    ///---------------------------------------------------------------------------
+    public class @ReplaceTableNameProvider
+    {
+        #region Methods
+        /// <summary>
+        /// Adding/Updating  @ReplaceTableName information.
+        /// </summary>
+        /// <remarks>
+        /// <param name="@ReplaceTableNameInfo">Passing all @ReplaceTableName info.</param>
+        /// <returns>returning updated record status. </returns>
+        /// </remarks>
+        public DataTable Set_@ReplaceTableNames(DataTable @ReplaceTableNameInfo)
+        {
+            DataTable ResultDatatable = new DataTable();
+            if (@ReplaceTableNameInfo != null)
+            {
+                if (@ReplaceTableNameInfo.Rows.Count > 0)
+                {
+                    try
+                    {
+                        string Result = String.Empty, Error = String.Empty;
+                        string ConnectionString = PostgreSQLHelper.GetConnectionString();
+                        string inputJson = JsonConvert.SerializeObject(@ReplaceTableNameInfo);
+                        DataSet dataSet = PostgreSQLHelper.GetProceduredata(ConnectionString, inputJson, "set_@ReplaceTableName", out Result, out Error);
+                        ResultDatatable = dataSet.Tables[0];
+                    }
+                    catch (SqlException sqlEx)  //Error...
+                    {
+                        throw sqlEx;
+                    }
+                }
+            }
+            return ResultDatatable;
+        }
+        /// <summary>
+        /// This will return all @ReplaceTableName records based on applied condition.
+        /// </summary>
+        /// <remarks>
+        /// <param name="DataTableSearchData">Passing condition for filtering @ReplaceTableName records.</param>
+        /// </remarks>
+        public DataTable Get@ReplaceTableNameInfo(DataTableSearchData Data)
+        {
+            DataTable ResultDatatable = new DataTable();
+            try
+            {
+                List<DataTableSearchData> objDataTableSearchData = new List<DataTableSearchData>();
+                objDataTableSearchData.Add(Data);
+                string inputJson = JsonConvert.SerializeObject(objDataTableSearchData);
+                string Result = String.Empty, Error = String.Empty;
+                string ConnectionString = PostgreSQLHelper.GetConnectionString();
+                DataSet dataSet = PostgreSQLHelper.GetProceduredata(ConnectionString, inputJson, "get_@ReplaceTableName", out Result, out Error);
+                ResultDatatable = dataSet.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ResultDatatable;
+        }
+        #endregion
+    }
+}

@@ -1,0 +1,79 @@
+﻿using Elmah;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
+using System.Text;
+using System.Web;
+using System.Web.SessionState;
+
+namespace @CNameSpace
+{
+    /// <summary>
+    /// Summary description for @ReplaceTableNameHandler
+    /// </summary>
+    public class @ReplaceTableNameHandler : IHttpHandler
+    {
+
+        public void ProcessRequest(HttpContext context)
+        {
+            context.Response.ContentType = "application/json";
+            string results = "";
+
+
+            if (!string.IsNullOrEmpty(context.Request["getmode"]))
+            {
+
+                string mode = context.Request["getmode"].ToString().ToLower();
+                switch (mode)
+                {
+                    case "get@ReplaceTableNamelist":
+                        try
+                        {
+                            @ReplaceTableNameSqlProviderSql p = new @ReplaceTableNameSqlProviderSql();
+                            var dataTableOutput = new DataTableOutput();
+                            string whereCondition = "";
+                            string orderBy = "";
+                            DataTableSearchData Data = JsonConvert.DeserializeObject<DataTableSearchData>(context.Request["jsonobject"].ToString());
+
+                            var output = p.Get@ReplaceTableNameInfo(Data);
+                            dataTableOutput.data = JsonConvert.SerializeObject(output);
+                            results = JsonConvert.SerializeObject(dataTableOutput);
+                        }
+                        catch (Exception ex)
+                        {
+                            results = "[]";
+                        }
+                        break;
+
+                    case "set@ReplaceTableName":
+                        try
+                        {
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>("[" + context.Request["jsonobject"].ToString() + "]");
+                            //DataTable dt = dr.Table;
+                            @ReplaceTableNameSqlProviderSql p = new @ReplaceTableNameSqlProviderSql();
+                            var data = p.set_@ReplaceTableName(dt);
+                            results = JsonConvert.SerializeObject(data);
+                        }
+                        catch (Exception ex)
+                        {
+                            results = "[]";
+                        }
+                        break;
+                }
+            }
+            context.Response.Write(results);
+        }
+
+
+        public bool IsReusable
+        {
+            get
+            {
+                return false;
+            }
+        }
+    }
+}

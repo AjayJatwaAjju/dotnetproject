@@ -1,0 +1,102 @@
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Data;
+using @CNameSpace.Bussiness;
+using @CNameSpace.Models;
+
+namespace @CNameSpace.Controllers
+{
+    ///---------------------------------------------------------------------------
+    /// <summary>
+    /// This class will contain the property of @ReplaceTableName table.
+    /// </summary>
+    /// <remarks>
+    /// Created on :- 22-09-2023
+    /// Created By :- VCE
+    /// Purpose :- Sepration of @ReplaceTableName.
+    /// </remarks>
+    ///---------------------------------------------------------------------------
+    [Route("api/[controller]")]
+    [ApiController]
+    public class @ReplaceTableNameController : ControllerBase
+    {
+        #region Methods
+
+        /// <summary>
+        /// Endpoint to retrieve filtered table data.
+        /// </summary>
+        /// <param name="Data">The DataTableSearchData object containing filter and sorting criteria.</param>
+        /// <returns>The DataTableOutput object with filtered data.</returns>
+        [HttpPost]
+        [Route("getfiltereddata")]
+        public async virtual Task<object> GetTableData(DataTableSearchData Data)
+        {
+            @ReplaceTableNameProvider obj@ReplaceTableNameProvider = new @ReplaceTableNameProvider();
+            var dataTableOutput = new DataTableOutput();
+            string whereCondition = String.Empty;
+            string orderBy = String.Empty;
+            foreach (var a in Data.columns)
+            {
+                if (!string.IsNullOrEmpty(a.search.value))
+                {
+                    whereCondition = whereCondition + ((!string.IsNullOrEmpty(whereCondition)) ? " or " : "") + a.data + " like '%" + a.search.value + "%'";
+                }
+            }
+            foreach (var a in Data.order)
+            {
+                orderBy = Data.columns[a.column].data + " " + a.dir;
+            }
+            var output = obj@ReplaceTableNameProvider.Get@ReplaceTableNameInfo(whereCondition, orderBy, Data.start.ToString(), Data.length.ToString());
+            dataTableOutput.data = JsonConvert.SerializeObject(output);
+            return dataTableOutput;
+        }
+        /// <summary>
+        /// Endpoint to retrieve @ReplaceTableNameData by key.
+        /// </summary>
+        /// <param name="key">The key used to retrieve UserData.</param>
+        /// <returns>The @ReplaceTableNameData for the specified key.</returns>
+        [HttpGet("{key}")]
+        public async virtual Task<object> Get(string key)
+        {
+            @ReplaceTableNameProvider obj@ReplaceTableNameProvider = new @ReplaceTableNameProvider();
+            return Ok(JsonConvert.SerializeObject(obj@ReplaceTableNameProvider.Get@ReplaceTableNameInfoById(key)));
+        }
+        /// <summary>
+        /// Endpoint to insert @ReplaceTableNameData information.
+        /// </summary>
+        /// <param name="JsonObject">The JSON object containing @ReplaceTableNameData information.</param>
+        /// <returns>The @ReplaceTablePK generated for the inserted data.</returns>
+        [HttpPost]
+        public async virtual Task<object> POST([FromBody] object JsonObject)
+        {
+            DataTable datatable = JsonConvert.DeserializeObject<DataTable>(JsonObject.ToString());
+            @ReplaceTableNameProvider obj@ReplaceTableNameProvider = new @ReplaceTableNameProvider();
+            return Ok(obj@ReplaceTableNameProvider.Insert(datatable));
+        }
+        /// <summary>
+        /// Endpoint to update @ReplaceTableNameData information.
+        /// </summary>
+        /// <param name="JsonObject">The JSON object containing @ReplaceTableNameData information to update.</param>
+        /// <returns>The status of the updated record.</returns>
+        [HttpPut]
+        public async virtual Task<object> Put([FromBody] object JsonObject)
+        {
+            DataTable datatable = JsonConvert.DeserializeObject<DataTable>(JsonObject.ToString());
+            @ReplaceTableNameProvider obj@ReplaceTableNameProvider = new @ReplaceTableNameProvider();
+            return Ok(obj@ReplaceTableNameProvider.Update(datatable));
+        }
+        /// <summary>
+        /// Endpoint to delete @ReplaceTableNameData by ID.
+        /// </summary>
+        /// <param name="id">The @ReplaceTableName used for deletion.</param>
+        /// <returns>The status of the delete operation.</returns>
+        [HttpDelete("{id}")]
+        public async virtual Task<object> Delete(string id)
+        {
+            @ReplaceTableNameProvider obj@ReplaceTableNameProvider = new @ReplaceTableNameProvider();
+            return Ok(obj@ReplaceTableNameProvider.Delete(id));
+        } 
+        #endregion
+    }
+}
